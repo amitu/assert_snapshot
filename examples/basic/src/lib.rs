@@ -13,5 +13,6 @@ mod tests {
     #[test]
     fn basic() {
         assert_snapshot!(&json!({}), &HashMap::new());
+        assert_snapshot!("tastic", &json!({}), &HashMap::new());
     }
 }

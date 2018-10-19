@@ -17,10 +17,7 @@ macro_rules! assert_snapshot {
     ( $data:expr, $scrubs:expr ) => {{
         assert_snapshot::assert_snapshot_(file!(), line!(), "", $data, $scrubs).unwrap()
     }};
+    ( $extra:expr, $data:expr, $scrubs:expr ) => {{
+        assert_snapshot::assert_snapshot_(file!(), line!(), $extra, $data, $scrubs).unwrap()
+    }};
 }
-
-//    ( $extra:expr, $data:expr, $scrubs:expr ) => {
-//        {
-//            assert_snapshot::assert_snapshot(file!(), line()!, $expr, $data, $scrubs)
-//        }
-//    };
