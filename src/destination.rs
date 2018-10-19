@@ -1,4 +1,4 @@
-fn destination(file: &'static str, func: &str, extra: &str, test: bool, ext: &str) -> String {
+pub fn destination(file: &'static str, func: &str, extra: &str, test: bool, ext: &str) -> String {
     let mut dst = file.replace(".rs", "__").to_string();
     dst.push_str(&func);
     if extra != "" {

@@ -1,0 +1,11 @@
+[package]
+name = "assert_snapshot_example"
+version = "0.0.0"
+authors = ["Amit Upadhyay <upadhyay@gmail.com>"]
+publish = false
+
+[dependencies]
+serde_json = "~1.0.32"
+
+[dependencies.assert_snapshot]
+path = "../.."
