@@ -61,8 +61,12 @@ where
             println!("{}", String::from_utf8(process.stdout)?);
             println!(
                 "\n\nIf the new output is correct, run: \nmv {} {}\n\n",
-                dst_tmp.to_str().ok_or(err_msg("PathNotUtf8"))?,
-                dst.to_str().ok_or(err_msg("PathNotUtf8"))?
+                (env::current_dir()?.join(dst_tmp))
+                    .to_str()
+                    .ok_or(err_msg("PathNotUtf8"))?,
+                (env::current_dir()?.join(dst.clone()))
+                    .to_str()
+                    .ok_or(err_msg("PathNotUtf8"))?
             );
             Err(err_msg("TestFailed"))?
         }

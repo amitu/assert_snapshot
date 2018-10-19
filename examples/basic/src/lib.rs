@@ -12,7 +12,10 @@ mod tests {
 
     #[test]
     fn basic() {
-        assert_snapshot!(&json!({}), &HashMap::new());
-        assert_snapshot!("tastic", &json!({}), &HashMap::new());
+        let mut scrubs = HashMap::new();
+        scrubs.insert("bamma".into(), "lamma".into());
+
+        assert_snapshot!(&json!({"hello": "world"}), &scrubs);
+        assert_snapshot!("tastic", &json!({"gamma": "bamma"}), &scrubs);
     }
 }

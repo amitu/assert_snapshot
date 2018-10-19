@@ -2,7 +2,7 @@ pub fn destination(file: &'static str, func: &str, extra: &str, test: bool, ext:
     let mut dst = file.replace(".rs", "__").to_string();
     dst.push_str(&func);
     if extra != "" {
-        dst.push_str("_");
+        dst.push_str("__");
         dst.push_str(extra);
     }
     if test {
@@ -19,7 +19,7 @@ mod tests {
     fn destination() {
         assert_eq!(
             super::destination("src/foo.rs", "hello", "yo", false, "json"),
-            "src/foo__hello_yo.json"
+            "src/foo__hello__yo.json"
         );
         assert_eq!(
             super::destination("src/foo.rs", "hello", "", false, "json"),
@@ -27,7 +27,7 @@ mod tests {
         );
         assert_eq!(
             super::destination("src/foo.rs", "hello", "yo", true, "json"),
-            "src/foo__hello_yo-test.json"
+            "src/foo__hello__yo-test.json"
         );
         assert_eq!(
             super::destination("src/foo.rs", "hello", "", true, "json"),
