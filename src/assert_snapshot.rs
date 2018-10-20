@@ -17,6 +17,18 @@ use destination;
 use function;
 use scrub;
 
+pub fn assert_snapshot_2<T>(
+    file: &'static str,
+    line: u32,
+    extra: &str,
+    data: &T,
+) -> Result<(), Error>
+where
+    T: serde::Serialize,
+{
+    assert_snapshot_(file, line, extra, data, &HashMap::new())
+}
+
 pub fn assert_snapshot_<T>(
     file: &'static str,
     line: u32,

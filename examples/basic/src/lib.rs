@@ -16,6 +16,12 @@ mod tests {
         scrubs.insert("bamma".into(), "lamma".into());
 
         assert_snapshot!(&json!({"hello": "world"}), &scrubs);
-        assert_snapshot!("tastic", &json!({"gamma": "bamma"}), &scrubs);
+        assert_snapshot!(&json!({"gamma": "bamma"}), &scrubs; "tastic");
+    }
+
+    #[test]
+    fn acidic() {
+        assert_snapshot!(&json!({"hello": "world"}));
+        assert_snapshot!(&json!({"hello": "world"}); "tastic");
     }
 }
